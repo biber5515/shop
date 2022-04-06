@@ -46,6 +46,9 @@
 					<li><a href="/member/login" class="active">로그인</a></li>
 				<li><a href="/member/join">회원가입</a></li>
 				</c:if>
+				<c:if test="${ member != null }">
+				<li><a href="#second">마이페이지</a></li>
+				</c:if>
 				<li><a href="#second">게시판</a></li>
 				<li><a href="#cta">아무거나</a></li>
 			</ul>
