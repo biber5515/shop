@@ -47,6 +47,7 @@
 				<li><a href="/member/join">회원가입</a></li>
 				</c:if>
 				<c:if test="${ member != null }">
+				<li><a href="/member/logout.do">로그아웃</a></li>
 				<li><a href="#second">마이페이지</a></li>
 				</c:if>
 				<li><a href="#second">게시판</a></li>

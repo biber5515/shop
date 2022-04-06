@@ -147,5 +147,16 @@ public class MemberController {
 
         
     }
+    
+    /* 메인페이지 로그아웃 */
+    @RequestMapping(value="lotout.do", method=RequestMethod.GET)
+    public String logoutMainGET(HttpServletRequest request,HttpSession session) throws Exception{
+        
+        
+        session.invalidate();
+        
+        return "redirect:/main";        
+        
+    }
 
 }
