@@ -149,13 +149,24 @@ public class MemberController {
     }
     
     /* 메인페이지 로그아웃 */
-    @RequestMapping(value="lotout.do", method=RequestMethod.GET)
+    @RequestMapping(value="logout.do", method=RequestMethod.GET)
     public String logoutMainGET(HttpServletRequest request,HttpSession session) throws Exception{
         
         
         session.invalidate();
         
         return "redirect:/main";        
+        
+    }
+    /* 비동기방식 로그아웃 메서드 */
+    @RequestMapping(value="logout.do", method=RequestMethod.POST)
+    @ResponseBody
+    public void logoutPOST(HttpServletRequest request) throws Exception{
+        
+        
+        HttpSession session = request.getSession();
+        
+        session.invalidate();
         
     }
 
