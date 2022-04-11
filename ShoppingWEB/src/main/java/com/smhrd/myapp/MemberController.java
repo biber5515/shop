@@ -110,7 +110,7 @@ public class MemberController {
 
 	}
 	 /* 로그인 */
-    @RequestMapping(value="login", method=RequestMethod.POST)
+    @RequestMapping(value="login.do", method=RequestMethod.POST)
     public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr,HttpSession session) throws Exception{
         
         String rawPw = "";

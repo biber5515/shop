@@ -35,7 +35,7 @@
 			<ul>
 			<li><a href="#second">상품 등록</a></li>
 			<li><a href="#second">상품 목록</a></li>
-			<li><a href="#second">작다 등록</a></li>
+			<li><a href="#second">작가 등록</a></li>
 				<li><a href="#second">작가관리</a></li>
 				<li><a href="#cta">회원관리</a></li>
 			</ul>
@@ -46,7 +46,6 @@
 
 						<!-- Content -->
 							<section id="content" class="main">
-								<span class="image main"><img src="${path}/resources/images/pic04.jpg" alt="" /></span>
 			
 							</section>
 
