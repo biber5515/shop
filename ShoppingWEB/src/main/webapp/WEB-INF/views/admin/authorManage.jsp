@@ -46,6 +46,7 @@
 
 						<!-- Content -->
 							<section id="content" class="main">
+							<h2>작가관리</h2>
 			
 							</section>
 

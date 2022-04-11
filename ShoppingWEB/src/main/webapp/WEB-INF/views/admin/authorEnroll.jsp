@@ -46,6 +46,7 @@
 
 						<!-- Content -->
 							<section id="content" class="main">
+							<h2>작가등록</h2>
 			
 							</section>
 

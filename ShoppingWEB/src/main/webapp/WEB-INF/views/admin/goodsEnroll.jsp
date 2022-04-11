@@ -46,7 +46,7 @@
 
 						<!-- Content -->
 							<section id="content" class="main">
-			
+							<h2>상품등록</h2>
 							</section>
 
 					</div>
