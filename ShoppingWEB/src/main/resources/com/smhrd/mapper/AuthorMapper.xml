@@ -8,5 +8,30 @@
           insert into vam_author(authorId,authorName, nationId, authorIntro) values(autor_seq.nextval,#{authorName}, #{nationId}, #{authorIntro} )
  
       </insert>
+      
+            <!-- 작가 목록 -->
+      <select id="authorGetList" resultType="com.smhrd.model.AuthorVO">
+      
+      <![CDATA[
+          select * from (
+              select /*+INDEX_DESC(vam_author SYS_C008587) */ 
+                  rownum as rn, authorid, authorname, nationid, regdate, updatedate
+            from vam_author 
+            where
+             
+    ]]>         
+            <if test="keyword != null">
+                authorname like '%'||#{keyword}||'%' and
+            </if>
+            
+    <![CDATA[        
+             rownum <= #{pageNum}*#{amount}
+            )
+        where rn > (#{pageNum} - 1) * #{amount}
+      ]]>
+      
+      </select>
+      
+
 
 </mapper>

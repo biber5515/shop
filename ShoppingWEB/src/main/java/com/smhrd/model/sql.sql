@@ -42,3 +42,5 @@ commit;
 
  alter table vam_author add regDate date default sysdate;
   alter table vam_author add updateDate date default sysdate;
+  
+  select * from user_indexes; 

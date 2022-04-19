@@ -4,42 +4,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>관리자페이지</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="${path}/resources/assets/css/main.css" />
-		<link rel="stylesheet" href="${path}/resources/assets/css/admin/main.css">
-		<noscript><link rel="stylesheet" href="${path}/resources/assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-
-		<!-- Wrapper -->
-			<div id="wrapper">
-			            <div class="top_gnb_area">
-                <ul class="list">    
-                    <li><a href="/main">메인 페이지</a></li>
-                    <li><a href="/member/logout.do">로그아웃</a></li>
-                    <li>고객센터</li>            
-                </ul>
-            </div>
-			
-
-				<!-- Header -->
-					<header id="header">
-						<h1>관리자페이지</h1>
-						<p></p>
-					</header>
-					<!-- Nav -->
-		<nav id="nav">
-			<ul>
-			<li><a class="admin_list_01" href="/admin/goodsEnroll">상품 등록</a></li>
-			<li><a class="admin_list_02" href="/admin/goodsManage">상품 목록</a></li>
-			<li><a class="admin_list_03" href="/admin/authorEnroll">작가 등록</a></li>
-				<li><a class="admin_list_04" href="/admin/authorManage">작가관리</a></li>
-				<li><a class="admin_list_05">회원관리</a></li>
-			</ul>
-		</nav>
+	<%@include file="../includes/admin/header.jsp" %>
 
 				<!-- Main -->
 					<div id="main">
@@ -47,44 +12,109 @@
 						<!-- Content -->
 							<section id="content" class="main">
 							<h2>작가등록</h2>
-			
+							<form action="/admin/authorEnroll.do" method="post" id="enrollForm">
+                    		<div class="form_section">
+                    			<div class="form_section_title">
+                    				<label>작가 이름</label>
+                    			</div>
+                    			<div class="form_section_content">
+                    				<input type="text" name="authorName">
+                    				<span id="warn_authorName">작가 이름을 입력 해주세요.</span>
+                    			</div>
+                    		</div>
+                    		<div class="form_section">
+                    			<div class="form_section_title">
+                    				<label>소속 국가</label>
+                    			</div>
+                    			<div class="form_section_content">
+                    				<select name="nationId">
+                    					<option value="none" selected>=== 선택 ===</option>
+                    					<option value="01">국내</option>
+                    					<option value="02">국외</option>
+                    				</select>
+                    				<span id="warn_nationId">소속 국가를 선택해주세요.</span>
+                    			</div>
+                    		</div>
+                    		<div class="form_section">
+                    			<div class="form_section_title">
+                    				<label>작가소개</label>
+                    			</div>
+                    			<div class="form_section_content">
+                    				<input name="authorIntro" type="text">
+                    				<span id="warn_authorIntro">작가 소개를 입력 해주세요.</span>
+                    			</div>
+                    		</div>
+                   		</form>
+                   			<div class="btn_section">
+                   				<button id="cancelBtn" class="btn">취 소</button>
+	                    		<button id="enrollBtn" class="btn enroll_btn">등 록</button>
 							</section>
 
 					</div>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<h2>Aliquam sed mauris</h2>
-							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">Learn More</a></li>
-							</ul>
-						</section>
-						<section>
-							<h2>Etiam feugiat</h2>
-							<dl class="alt">
-								<dt>Address</dt>
-								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
-								<dt>Phone</dt>
-								<dd>(000) 000-0000 x 0000</dd>
-								<dt>Email</dt>
-								<dd><a href="#">information@untitled.tld</a></dd>
-							</dl>
-							<ul class="icons">
-								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
-								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
-							</ul>
-						</section>
-						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
-
-			</div>
+<%@include file="../includes/admin/footer.jsp" %>
 
 		<!-- Scripts -->
+		<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+ 
+	/* 등록 버튼 */
+	$("#enrollBtn").click(function(){  
+		
+		 /* 검사 통과 유무 변수 */
+	    let nameCheck = false;            // 작가 이름
+	    let nationCheck = false;        // 소속 국가
+	    let introCheck = false;            // 작가 소개    
+	 
+	    /* 입력값 변수 */
+	    let authorName = $('input[name=authorName]').val();        // 작가 이름
+	    let nationId = $('select[name=nationId]').val();        // 소속 국가
+	    let authorIntro = $('input[name=authorIntro]').val();    // 작가 소개
+	    /* 공란 경고 span태그 */
+	    let wAuthorName = $('#warn_authorName');
+	    let wNationId = $('#warn_nationId');
+	    let wAuthorIntro = $('#warn_authorIntro');  
+	    /* 작기 이름 공란 체크 */
+	    if(authorName ===''){
+	        wAuthorName.css('display', 'block');
+	        nameCheck = false;
+	    } else{
+	        wAuthorName.css('display', 'none');
+	        nameCheck = true;
+	    }
+	    
+	    /* 소속 국가 공란 체크 */
+	    if(nationId ==='none'){
+	        wNationId.css('display', 'block');
+	        nationCheck = false;
+	    } else{
+	        wNationId.css('display', 'none');
+	        nationCheck = true;
+	    }    
+	    
+	    /* 작가 소개 공란 체크 */
+	    if(authorIntro ===''){
+	        wAuthorIntro.css('display', 'block');
+	        introCheck = false;
+	    } else{
+	        wAuthorIntro.css('display', 'none');
+	        introCheck = true;
+	    }    
+	    /* 최종 검사 */
+	    if(nameCheck && nationCheck && introCheck){
+	        $("#enrollForm").submit();    
+	    } else{
+	        return;
+	    }
+	});
+ 
+	/* 취소 버튼 */
+	$("#cancelBtn").click(function(){
+    	location.href="/admin/authorManage"
+	});
+ 
+</script>
 			<script src="${path}/resources/assets/js/jquery.min.js"></script>
 			<script src="${path}/resources/assets/js/jquery.scrollex.min.js"></script>
 			<script src="${path}/resources/assets/js/jquery.scrolly.min.js"></script>
