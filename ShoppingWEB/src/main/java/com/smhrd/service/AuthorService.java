@@ -11,6 +11,8 @@ public interface AuthorService {
     public void authorEnroll(AuthorVO author) throws Exception;
     /* 작가 목록 */
     public List<AuthorVO> authorGetList(Criteria cri) throws Exception;
+    /* 작가 총 수 */
+    public int authorGetTotal(Criteria cri) throws Exception;   
     
 
 }

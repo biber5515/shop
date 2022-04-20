@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.smhrd.model.AuthorVO;
 import com.smhrd.model.Criteria;
+import com.smhrd.model.PageDTO;
 import com.smhrd.service.AuthorService;
 
 
@@ -50,6 +51,13 @@ public class AdminController {
         List list = authorService.authorGetList(cri);
         
         model.addAttribute("list", list);
+        
+        /* 페이지 이동 인터페이스 데이터 */
+        int total = authorService.authorGetTotal(cri);
+        
+        PageDTO pageMaker = new PageDTO(cri, total);
+        
+        model.addAttribute("pageMaker", pageMaker);
     }
     
     /* 작가 등록 */
