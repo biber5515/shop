@@ -3914,3 +3914,15 @@ input, select, textarea {
 	border : 2px solid black;
 	font-weight:400;
 }
+.search_input{
+    position: relative;
+    text-align:center;	
+}
+.search_input input[name='keyword']{
+	padding: 4px 10px;
+    font-size: 15px;
+    height: 5px;
+    line-height: 20px;
+}
+
+
