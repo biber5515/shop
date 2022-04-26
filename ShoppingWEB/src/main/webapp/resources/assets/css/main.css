@@ -3924,5 +3924,11 @@ input, select, textarea {
     height: 5px;
     line-height: 20px;
 }
+.table_empty{
+	height: 50px;
+    text-align: center;
+    margin: 200px 0 215px 0px;
+    font-size: 25px;
+}
 
 

@@ -12,4 +12,6 @@ public interface AuthorMapper {
 	 public List<AuthorVO> authorGetList(Criteria cri);
 
 	 public int authorGetTotal(Criteria cri);
+	
+	 public AuthorVO authorGetDetail(int authorId);
 }
